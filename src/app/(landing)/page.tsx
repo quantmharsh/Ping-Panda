@@ -1,8 +1,8 @@
 import React from 'react'
-import MaxWidthWrapper from './components/max-width-wrapper'
-import Heading from './components/heading'
+import MaxWidthWrapper from '../components/max-width-wrapper'
+import Heading from '../components/heading'
 import {Check} from "lucide-react";
-import ShinyButton from './components/shinyButton';
+import ShinyButton from '../components/shinyButton';
 
 type Props = {}
 
