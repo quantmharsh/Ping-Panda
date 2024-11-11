@@ -1,5 +1,5 @@
 import { cn } from '@/utils'
-import { ArrowRightCircle } from 'lucide-react'
+import { ArrowRightCircle, RocketIcon, TruckIcon } from 'lucide-react'
 import Link from 'next/link'
 import React, { AnchorHTMLAttributes } from 'react'
  interface ShinyButtonProps extends  AnchorHTMLAttributes<HTMLAnchorElement>  {}
@@ -10,7 +10,9 @@ const ShinyButton = ({children , className , href , ...props}: ShinyButtonProps)
     <Link href={href??"#"} className={cn("group relative flex transform items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md border  border-white  bg-brand-700 px-8 text-base/7  font-medium  text-white transition-all duration-300 hover:ring-2 hover:ring-brand-700 hover:ring-offset-2  focus:outline-none  focus:ring-2 focus:ring-offset-2" , className)} {...props}>
       <span className='relative z-10 flex items-center gap-2'>
         {children}
-        <ArrowRightCircle className='size-4 shrink-0 text-white transition-transform  duration-300 ease-in-out group-hover:translate-x-[2px]'/>
+        {/* <ArrowRightCircle className='size-4 shrink-0 text-white transition-transform  duration-300 ease-in-out group-hover:translate-x-[20px]'/> */}
+        <RocketIcon className='size-4 shrink-0 text-white transition-transform  duration-300 ease-in-out group-hover:translate-x-[20px]'/>
+       
 
 
       </span>

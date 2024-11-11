@@ -1,6 +1,7 @@
+import Navbar from '@/components/navbar'
 import { ReactNode } from 'hono/jsx'
 import React from 'react'
-import Navbar from '../components/navbar'
+
 
 type Props = {}
 
