@@ -5,6 +5,8 @@ import MaxWidthWrapper from "@/components/max-width-wrapper"
 import Heading from "@/components/heading"
 import ShinyButton from "@/components/shinyButton"
 import MockDiscordUI from "@/components/mockDiscordUi"
+import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
+import DiscordMessage from "@/components/discord-message"
 
 type Props = {}
 
@@ -67,7 +69,13 @@ const page = (props: Props) => {
         <div className="relative  mx-auto">
           <MaxWidthWrapper className="relative">
             <div className="-m-2  rounded-xl  bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 ">
-              <MockDiscordUI />
+              <MockDiscordUI>
+                <AnimatedList>
+                     <DiscordMessage/>
+
+                </AnimatedList>
+                </MockDiscordUI>
+                
             </div>
           </MaxWidthWrapper>
         </div>
