@@ -77,16 +77,53 @@ const page = (props: Props) => {
                     username="PingPanda"
                     timestamp="Today at 13:45PM"
                     badgeText="SignUp"
-                    badgeColor="#43b581 "
+                    badgeColor="#43b581"
                     title="👤 New user Signed Up"
                     content={
                       {
-                        name: "Rohit Sharma",
-                        email: "Rohit264@gmail.com"
+                        Name: "Rohit Sharma",
+                        Email: "Rohit264@gmail.com"
                       }
                     }
 
                   />
+                    <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 15:31PM"
+                    badgeText="Revenue"
+                    badgeColor="#faa61a"
+                    title="💰 Payment Recived"
+                    content={
+                      {
+                        Amount: "₹749.49",
+                        Email: "Virat49@gmail.com",
+                        Plan:"Premium"
+                      }
+                    }
+
+                  />
+                    <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 20:59PM"
+                    badgeText="Delivered"
+                    badgeColor="#d6a2e3"
+                    title="📦 New Order Delivered"
+                    content={
+                      {
+                        Name: "MS Dhoni",
+                        Address:"Chennai, India",
+                        Email: "MSDhoni0007@gmail.com"
+                      }
+                    }
+
+                  />
+                   
+                  
+                  
                   
 
                 </AnimatedList>

@@ -16,7 +16,7 @@ type Props = {
   }
 }
 
-type BadgeColor = "#43b581" | "#faa61a" | (string & {})
+type BadgeColor = "#43b581" | "#faa61a" |"#d6a2e3"| (string & {})
 
 const getBadgeStyles = (color: BadgeColor) => {
   switch (color) {
@@ -24,6 +24,9 @@ const getBadgeStyles = (color: BadgeColor) => {
       return "bg-green-500/10 text-green-400 ring-green-500/20"
     case "#faa61a":
       return "bg-yellow-500/10 text-yellow-400 ring-yellow-500/20"
+    case "#d6a2e3":
+      return "bg-purple-500/10 text-purple-400 ring-purple-500/20"
+
     default:
       return "bg-gray-500/10 text-gray-400 ring-gray-500/20"
   }
@@ -35,7 +38,7 @@ const DiscordMessage = ({
   username,
   timestamp,
   badgeText,
-  badgeColor = "#43b581 ",
+  badgeColor = "#43b581",
   title,
   content,
 }: Props) => {
