@@ -71,11 +71,27 @@ const page = (props: Props) => {
             <div className="-m-2  rounded-xl  bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 ">
               <MockDiscordUI>
                 <AnimatedList>
-                     <DiscordMessage/>
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 13:45PM"
+                    badgeText="SignUp"
+                    badgeColor="#43b581 "
+                    title="👤 New user Signed Up"
+                    content={
+                      {
+                        name: "Rohit Sharma",
+                        email: "Rohit264@gmail.com"
+                      }
+                    }
+
+                  />
+                  
 
                 </AnimatedList>
-                </MockDiscordUI>
-                
+              </MockDiscordUI>
+
             </div>
           </MaxWidthWrapper>
         </div>

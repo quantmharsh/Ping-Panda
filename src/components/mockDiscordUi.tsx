@@ -146,27 +146,26 @@ const MockDiscordUI = ({ children }: PropsWithChildren) => {
           </div>
         </div>
         {/* Message History */}
-         <div className="flex-1 overflow-y-auto p-4 bg-discord-background  flex flex-colr-reverse">
+        <div className="flex-1 overflow-y-auto p-4 bg-discord-background  flex flex-colr-reverse">
           {children}
-
-         </div>
-         {/* Message Input */}
-         <div className="p-4">
+        </div>
+        {/* Message Input */}
+        <div className="p-4">
           <div className=" flex items-center bg-[#40444b] rounded-lg p-1">
-            <PlusCircle className= "mx-3 text-[#b9bbbe] hover:text-white cursor-not-allowed"/>
-              <input readOnly type="text" placeholder="Message @PingPanda 🐼"
-              className="flex-1 bg-transparent py-2.5 px-1 text-white placeholder:-[#72767d] focus:outline-none cursor-not-allowed"/>
-
-              <div className="flex items-center space-x-3 mx-3 text-[#b9bbbe]">
-                <Gift className="size-5 hover:text-white cursor-not-allowed hidden  sm:block"/>
-                <Sticker className="size-5 hover:text-white cursor-not-allowed hidden  sm:block"/>
-                <Smile className="size-5 hover:text-white cursor-not-allowed hidden  sm:block"/>
-
-
-              </div>
+            <PlusCircle className="mx-3 text-[#b9bbbe] hover:text-white cursor-not-allowed" />
+            <input
+              readOnly
+              type="text"
+              placeholder="Message @PingPanda 🐼"
+              className="flex-1 bg-transparent py-2.5 px-1 text-white placeholder:-[#72767d] focus:outline-none cursor-not-allowed"
+            />
+            <div className="flex items-center space-x-3 mx-3 text-[#b9bbbe]">
+              <Gift className="size-5 hover:text-white cursor-not-allowed hidden  sm:block" />
+              <Sticker className="size-5 hover:text-white cursor-not-allowed hidden  sm:block" />
+              <Smile className="size-5 hover:text-white cursor-not-allowed hidden  sm:block" />
+            </div>
           </div>
-
-         </div>
+        </div>
       </div>
     </div>
   )
