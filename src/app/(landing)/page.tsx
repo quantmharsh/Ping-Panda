@@ -7,6 +7,7 @@ import ShinyButton from "@/components/shinyButton"
 import MockDiscordUI from "@/components/mockDiscordUi"
 import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
 import DiscordMessage from "@/components/discord-message"
+import Image from "next/image"
 
 type Props = {}
 
@@ -129,30 +130,46 @@ const page = (props: Props) => {
           </div>
           <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
             {/* First bento grid element  */}
-           
+
             <div className="relative lg:row-span-2">
-             
               <div className="absolute inset-px rounded-lg bg-white  lg:rounded-l-[2rem] " />
               {/*              
-             
-               This div is relatively positioned within the parent div, with a flexbox layout and overflow hidden
-               The border radius is calculated by adding 1px to the theme's large border radius (theme(borderRadius.lg))
+            
+              This div is relatively positioned within the parent div, with a flexbox layout and overflow hidden
+              The border radius is calculated by adding 1px to the theme's large border radius (theme(borderRadius.lg))
              */}
               <div className="relative flex h-full flex-col  overflow-hidden   rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)] ">
                 <div className="px-8 pb-3  pt-8  sm:px-10  sm:pb-0 sm:pt-10">
                   <p className=" mt-2  text-lg/7  font-medium tracking-tight text-brand-950  max-lg:text-center ">
-                  Real-Time Notifications 🔔</p>
-                  <p className="mt-2  max-w-lg  text-sm/6  text-gray-600 max-lg:text-center ">
-                  Get 
-                   <span className="font-semibold">
-                    {" "} Notified
-                     </span> about critical  events  the moment they happen  , no matter if you are at home or on the go.
-
+                    Real-Time Notifications 🔔
                   </p>
-
+                  <p className="mt-2  max-w-lg  text-sm/6  text-gray-600 max-lg:text-center ">
+                    Get
+                    <span className="font-semibold text-brand-700">
+                      {" "}
+                      Notified
+                    </span>{" "}
+                    about critical events the moment they happen , no matter if
+                    you are at home or on the go.
+                  </p>
                 </div>
 
+                <div className="relative min-h-[30rem] w-full  grow [container-type:inline-size] max-lg:mx-auto  max-lg:max-w-sm">
+                  {/* cqw - container query width . this border radius is relative to the parent div which contains [container-type:inline-size] 
+                  it is relative to  its parent .  child div shrinks or grows relative to its parent 
+
+                 */}
+                  <div className="absolute inset-x-0 bottom-0 top-10 overflow-hidden  rounded-t-[12cqw] border-x-[3cqw]  border-t-[3cqw]  border-gray-700 bg-gray-900  shadow-2xl">
+                    <Image
+                      className="size-full object-cover object-top"
+                      src="/phone-screen.png"
+                      alt="Phone Screen  Displaying app interface "
+                      fill
+                    />
+                  </div>
+                </div>
               </div>
+              <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]" />
             </div>
           </div>
         </MaxWidthWrapper>
