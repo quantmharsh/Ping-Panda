@@ -79,15 +79,12 @@ const page = (props: Props) => {
                     badgeText="SignUp"
                     badgeColor="#43b581"
                     title="👤 New user Signed Up"
-                    content={
-                      {
-                        Name: "Rohit Sharma",
-                        Email: "Rohit264@gmail.com"
-                      }
-                    }
-
+                    content={{
+                      Name: "Rohit Sharma",
+                      Email: "Rohit264@gmail.com",
+                    }}
                   />
-                    <DiscordMessage
+                  <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
                     avatarAlt="PingPanda Avatar"
                     username="PingPanda"
@@ -95,16 +92,13 @@ const page = (props: Props) => {
                     badgeText="Revenue"
                     badgeColor="#faa61a"
                     title="💰 Payment Recived"
-                    content={
-                      {
-                        Amount: "₹749.49",
-                        Email: "Virat49@gmail.com",
-                        Plan:"Premium"
-                      }
-                    }
-
+                    content={{
+                      Amount: "₹749.49",
+                      Email: "Virat49@gmail.com",
+                      Plan: "Premium",
+                    }}
                   />
-                    <DiscordMessage
+                  <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
                     avatarAlt="PingPanda Avatar"
                     username="PingPanda"
@@ -112,28 +106,57 @@ const page = (props: Props) => {
                     badgeText="Delivered"
                     badgeColor="#d6a2e3"
                     title="📦 New Order Delivered"
-                    content={
-                      {
-                        Name: "MS Dhoni",
-                        Address:"Chennai, India",
-                        Email: "MSDhoni0007@gmail.com"
-                      }
-                    }
-
+                    content={{
+                      Name: "MS Dhoni",
+                      Address: "Chennai, India",
+                      Email: "MSDhoni0007@gmail.com",
+                    }}
                   />
-                   
-                  
-                  
-                  
-
                 </AnimatedList>
               </MockDiscordUI>
-
             </div>
           </MaxWidthWrapper>
         </div>
       </section>
-      <section></section>
+      {/* Section for Bento-Grid  */}
+      <section className="relative py-24 sm:py-32  bg-brand-25">
+        <MaxWidthWrapper className="flex flex-col  items-center gap-16 sm:gap-20">
+          <div>
+            <h2 className="text-center  text-base/7 font-semibold  text-brand-600">
+              Intutive Monitoring
+            </h2>
+            <Heading>Stay ahead with real-time insights</Heading>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
+            {/* First bento grid element  */}
+           
+            <div className="relative lg:row-span-2">
+             
+              <div className="absolute inset-px rounded-lg bg-white  lg:rounded-l-[2rem] " />
+              {/*              
+             
+               This div is relatively positioned within the parent div, with a flexbox layout and overflow hidden
+               The border radius is calculated by adding 1px to the theme's large border radius (theme(borderRadius.lg))
+             */}
+              <div className="relative flex h-full flex-col  overflow-hidden   rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)] ">
+                <div className="px-8 pb-3  pt-8  sm:px-10  sm:pb-0 sm:pt-10">
+                  <p className=" mt-2  text-lg/7  font-medium tracking-tight text-brand-950  max-lg:text-center ">
+                  Real-Time Notifications 🔔</p>
+                  <p className="mt-2  max-w-lg  text-sm/6  text-gray-600 max-lg:text-center ">
+                  Get 
+                   <span className="font-semibold">
+                    {" "} Notified
+                     </span> about critical  events  the moment they happen  , no matter if you are at home or on the go.
+
+                  </p>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
       <section></section>
     </>
   )
