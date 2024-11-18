@@ -131,7 +131,7 @@ const page = (props: Props) => {
           <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
             {/* First bento grid element  */}
 
-            <div className="relative lg:row-span-2">
+            <div className=" group relative lg:row-span-2">
               <div className="absolute inset-px rounded-lg bg-white  lg:rounded-l-[2rem] " />
               {/*              
             
@@ -169,11 +169,11 @@ const page = (props: Props) => {
                   </div>
                 </div>
               </div>
-              <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]" />
+              <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-4 ring-purple/5 lg:rounded-l-[2rem]  group-hover:ring-purple-300" />
             </div>
 
             {/* Second bento grid element */}
-            <div className=" relative max-lg:row-start-1">
+            <div className="  group relative max-lg:row-start-1">
               <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"/>
               <div className="relative flex-h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
                 <div className="px-8 pt-8 sm:px-10 sm:pt-10">
@@ -204,10 +204,43 @@ const page = (props: Props) => {
 
 
               </div>
-              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] "/>
+              <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-4 ring-purple/5 group-hover:ring-purple-300" />
 
             
             </div>
+            {/* Third Bento Grid Element  */}
+               <div className=" group relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+                
+                <div className="absolute inset-px rounded-lg bg-white"/>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+                  <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                    <p className="mt-2 text-lg/7 font-medium tracking-tight    text-brand-950 max-lg:text-center ">
+                    Track Any Properties
+
+                    </p>
+                    <p className="mt-2 max-w-lg text-sm/6 text-gray-600  max-lg:text-center">
+                    Add any custom data you like to an <span className="font-semibold text-brand-700"> Event</span> {" "}, such as a user email , a purchase amount or an exceeded quota limit.
+
+                    </p>
+
+                  </div>
+                  <div className="flex flex-1 items-center justify-center px-8  max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
+                    <Image
+                    className="w-full max-lg:max-w-xs"
+                    src="/bento-custom-data.png"
+                    alt="Bento box illustrating custom data tracking"
+                    width={500}
+                    height={300}
+                    />
+
+
+                  </div>
+     
+                </div>
+                <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-4  ring-blue-300  group-hover:ring-purple-300" />
+
+               </div>
+               {/* Fourth Bento Grid Element */}
           </div>
         </MaxWidthWrapper>
       </section>
