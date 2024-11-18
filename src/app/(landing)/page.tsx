@@ -171,6 +171,43 @@ const page = (props: Props) => {
               </div>
               <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]" />
             </div>
+
+            {/* Second bento grid element */}
+            <div className=" relative max-lg:row-start-1">
+              <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"/>
+              <div className="relative flex-h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
+                <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-brand-950 max-lg:text-center">
+                  Track Any Event 
+
+                  </p>
+                  <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center ">
+                  From new <span className="text-purple-600 font-semibold">User</span>
+                  {" "} signups to successful payments, 
+                  <span className="font-semibold text-brand-700">PingPanda</span>
+                  {" "} notifies you for all critical events in your 
+                  <span className="font-semibold text-red-700">SaaS</span>.
+
+                  </p>
+
+                </div>
+                <div className=" flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
+                  <Image
+                  className="w-full max-lg:max-w-xs"
+                  src="/bento-any-event.png"
+                  alt="Bento box illustrating event tracking"
+                  width={500}
+                  height={300}
+                  />
+
+                </div>
+
+
+              </div>
+              <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] "/>
+
+            
+            </div>
           </div>
         </MaxWidthWrapper>
       </section>
