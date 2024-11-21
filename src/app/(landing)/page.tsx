@@ -8,7 +8,7 @@ import MockDiscordUI from "@/components/mockDiscordUi"
 import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"
 import DiscordMessage from "@/components/discord-message"
 import Image from "next/image"
-import SyntaxHighlighter from "react-syntax-highlighter"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 type Props = {}
@@ -20,7 +20,7 @@ const page = (props: Props) => {
       category: "sale",
       fields: {
         plan: "PRO",
-        email: "zoe.martinez2001@email.com",
+        email: "Quantam.Dev2001@email.com",
         amount: 49.00
       }
     }),
@@ -284,41 +284,42 @@ const page = (props: Props) => {
                       </div>
                       <div className="overflow-hidden">
                         <div className="max-h-[30rem]">
-                          <SyntaxHighlighter
-                           language="typescript"
-                           style={{...oneDark,
-                            'pre[class*="language-"]':{
+                        <SyntaxHighlighter
+                          language="typescript"
+                          style={{
+                            ...oneDark,
+                            'pre[class*="language-"]': {
                               ...oneDark['pre[class*="language-"]'],
-                              background:"transparent",
-                              overflow:"hidden",
+                              background: "transparent",
+                              overflow: "hidden",
                             },
-                            'code[class*="language-"]':
-                            {
-                              ...oneDark['code[class*="language-1"]'],
-                            background:"transparent",
-                          }
-                        }}
-                          >
+                            'code[class*="language-"]': {
+                              ...oneDark['code[class*="language-"]'],
+                              background: "transparent",
+                            },
+                          }}
+                        >
                           {codeSnippet}
-                          </SyntaxHighlighter>
+                        </SyntaxHighlighter>
 
                         </div>
                         
 
-                      </div>
+                      </div> 
                     </div>
 
                   </div>
                   
                 </div>
 
-                <div className=" pointer-events-none absolute inset-px rounded-lg shadow ring-4  max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]ring-blue-300  group-hover:ring-purple-300" />
+                <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-4 ring-blue-300  group-hover:ring-purple-300 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
 
                </div>
                
           </div>
         </MaxWidthWrapper>
       </section>
+      
       <section></section>
     </>
   )
