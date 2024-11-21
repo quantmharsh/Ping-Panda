@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Check } from "lucide-react"
+import { Check, Sparkle, Sparkles, Star, StarOff, Stars } from "lucide-react"
 import MaxWidthWrapper from "@/components/max-width-wrapper"
 import Heading from "@/components/heading"
 import ShinyButton from "@/components/shinyButton"
@@ -10,6 +10,7 @@ import DiscordMessage from "@/components/discord-message"
 import Image from "next/image"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { Icons } from "@/components/icons"
 
 type Props = {}
 
@@ -319,8 +320,109 @@ const page = (props: Props) => {
           </div>
         </MaxWidthWrapper>
       </section>
-      
-      <section></section>
+      {/* Sample Feedback from users */}
+
+      <section className="relative py-24 sm:py-32 bg-white">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
+          <div>
+            <h2 className="text-center text-base/7 font-semibold text-brand-600">
+            Real-World Experiences
+
+            </h2>
+            <Heading className="text-center">
+              What our customers say
+
+            </Heading>
+          </div>
+
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2  divide-y lg:divide-x divide-gray-200 ">
+            {/* First customer Review */}
+            <div className=" group flex flex-auto flex-col gap-5 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] hover:bg-purple-300 lg:rounded-tr-none lg:rounded-l-[2rem]">
+              <div className="flex gap-1 mb-2 justify-center lg:justify-start">
+               <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+               <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-bounce group-hover:text-yellow-300 group-hover:fill-yellow-300"/>  <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>  <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-bounce group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+                 <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+           
+              </div>
+              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
+                PingPanda has been a game-changer for me. I've been using it for
+                two months now and seeing sales pop up in real-time is super
+                satisfying.
+              </p>
+             <div className="flex flex-col justify-center lg:justify-start sm:flex-row  items-center sm:items-start gap-4 mt-2">
+              <Image
+              src="/user-2.png"
+              className="rounded-full object-cover"
+              alt="Random User"
+              width={48}
+              height={48}
+              />
+              <div className="flex flex-col items-center sm:items-start">
+                <p className="font-semibold flex-items-center">
+                  Scarlett Johansson
+                  <Icons.verificationBadge className="size-4 inline-block ml-1.5"/>
+
+                </p>
+                <p className="text-sm text-gray-600">@itsScarlett</p>
+
+              </div>
+
+             </div>
+            </div>
+
+            {/* Second Customer review */}
+            <div className="group flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] hover:bg-purple-300 lg:rounded-bl-none lg:rounded-r-[2rem]">
+            <div className="flex gap-1 mb-2 justify-center lg:justify-start">
+               <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+               <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-bounce group-hover:text-yellow-300 group-hover:fill-yellow-300"/>  <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>  <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-bounce group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+                 <Sparkles className="size-7 text-brand-600 fill-brand-600 group-hover:animate-spin group-hover:text-yellow-300 group-hover:fill-yellow-300"/>
+           
+              </div>
+              <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
+              PingPanda's been paying off for our SaaS. Nice to have simple
+                way to see how we're doing day-to-day. Definitely makes our
+                lives easier.
+              </p>
+             <div className="flex flex-col justify-center lg:justify-start sm:flex-row  items-center sm:items-start gap-4 mt-2">
+              <Image
+              src="/user-1.png"
+              className="rounded-full object-cover"
+              alt="Random User"
+              width={48}
+              height={48}
+              />
+              <div className="flex flex-col items-center sm:items-start">
+                <p className="font-semibold flex-items-center">
+                 Tom Cruise
+                  <Icons.verificationBadge className="size-4 inline-block ml-1.5"/>
+
+                </p>
+                <p className="text-sm text-gray-600">@tomCruise</p>
+
+              </div>
+
+            </div>
+
+          </div>
+          </div>
+          <ShinyButton
+            href="/sign-up"
+            className="relative z-10 h-14 w-full max-w-xs text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
+          >
+            Start For Free Today
+          </ShinyButton>
+
+        </MaxWidthWrapper>
+
+
+
+
+
+
+
+
+
+      </section>
     </>
   )
 }
