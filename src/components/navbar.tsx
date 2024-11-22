@@ -4,10 +4,11 @@ import Link from 'next/link'
 import {SignOutButton} from "@clerk/nextjs";
 import { Button, buttonVariants } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+import { currentUser } from '@clerk/nextjs/server';
 
 
-const Navbar = () => {
-  const user=true;
+const Navbar = async() => {
+  const user=await currentUser();
   return (
    <nav className='sticky z-[100] h-16  inset-x-0 top-0 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg  transition-all'>
     <MaxWidthWrapper>
@@ -20,7 +21,7 @@ const Navbar = () => {
               user?
               <>
               <SignOutButton >
-              <Button size={"sm"} variant={"ghost"}>LogOut</Button>
+              <Button size={"sm"} variant={"ghost"}>Logout</Button>
                 </SignOutButton>
                 <Link href="/dashboard" className={buttonVariants({
                   size:"sm",
