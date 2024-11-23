@@ -11,11 +11,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  name      String
+enum Plan{
+  FREE 
+  PRO
+}
+model User{
+  id String @id @default(cuid())
+  externalId String? @unique
+  quotaLimit Int
+  plan Plan @default(FREE)
+  email String @unique
+  apikey String @unique @default(cuid())
+ discordId String?
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ //creating relation 1:N
+ eventCategories EventCategory[]
+
+ @@index([email , apikey])  
+
+}
+model EventCategory{
+  id String @id @default(cuid())
+  name String 
+  color Int
+  emoji String?
+  //creating relation to user N:1 
+  user User  @relation(fields:[userId] , references: [id])
+  userId String 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@index([name])
+// one user can have only 1 event with given name . No multiple events with same name
+  @@unique([userId , name])
 }
