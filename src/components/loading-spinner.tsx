@@ -1,6 +1,6 @@
-import { VariantProps } from "class-variance-authority";
+import { VariantProps ,cva} from "class-variance-authority";
 
-const { cva } = require("class-variance-authority");
+
 
 const spinnerVariants=cva(
     "border-4 rounded-full border-brand-200 border-t-brand-700 animate-spin duration-700",
