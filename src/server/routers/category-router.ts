@@ -9,7 +9,7 @@ export const categoryRouter=router({
   //c is context that we get from hono.js it has all the methods , features of Hono.js
   //ctx is a context that we pass. it consists info. that we have passed through middleware in procedure
     getEventCategories:privateProcedure.query(async({c,ctx})=>{
-
+         //fetching categories that logged in  user  has created
       const categories=await db.eventCategory.findMany({
         where:{userId:ctx.user.id},
         select:{
@@ -24,7 +24,7 @@ export const categoryRouter=router({
           updatedAt:"desc"
         },
       })
-      
+      //counting all the categories 
       const  categoriesWithCounts =await Promise.all(
         categories.map(async(category)=>{
           const now=new Date();
@@ -39,7 +39,7 @@ export const categoryRouter=router({
                 fields:true
               },
               distinct:["fields"],
-              
+               //creating set of unique fields for each category 
             }).then((events)=>{
               const fieldNames= new Set<string>();
               events.forEach((event)=>{
@@ -50,10 +50,12 @@ export const categoryRouter=router({
               })
               return  fieldNames.size
             }),
+            //count total no. of events per category 
             db.event.count({
               where:{EventCategory:{id:category.id},
             createdAt:{gte:firstDayOfMonth}}
             }),
+            //last event that happen for particular category
             db.event.findFirst({
               where:{ EventCategory:{id:category.id}},
               orderBy:{createdAt:"desc"},
@@ -69,7 +71,7 @@ export const categoryRouter=router({
         })
       )
      
-       
+       //returning superjson because its easy to work with dates
        return c.superjson({categories:categoriesWithCounts})
 
     })
