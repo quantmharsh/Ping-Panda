@@ -43,6 +43,6 @@ return  next({user});
  *
  * This is the base piece you use to build new queries and mutations on your API.
  */
-export const baseProcedure = j.procedure
+export const baseProcedure = j.procedure ;
 export const publicProcedure = baseProcedure;
 export const privateProcedure= publicProcedure.use(authMiddleware);
