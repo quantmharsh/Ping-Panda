@@ -7,6 +7,8 @@ import DashboardPageContent from './dashboard-page-content';
 
 type Props = {}
 
+
+//if user is not logged in then redirect to sign in page
 const page = async(props: Props) => {
    const auth = await currentUser();
    if(!auth)
