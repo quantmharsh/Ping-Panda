@@ -7,6 +7,7 @@ import { format, formatDistanceToNow } from 'date-fns'
 import { ArrowRight, BarChart2, Clock, Database, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { Button, buttonVariants } from '@/components/ui/button'
+import { Modal } from '@/components/ui/modal'
 
 type Props = {
 
@@ -59,6 +60,7 @@ if(!categories || categories.length===0)
 }
 
   return (
+    <>
     <ul className='grid max-w-6xl grid-cols-1 lg:grid-cols-2  xl:grid-cols-3 gap-6 '>
       {categories.map((category)=>(
         <li key={category.id}
@@ -135,6 +137,10 @@ if(!categories || categories.length===0)
       ))}
 
     </ul>
+    <Modal>
+      This is Modal Component ...
+    </Modal>
+    </>
   )
 }
 
