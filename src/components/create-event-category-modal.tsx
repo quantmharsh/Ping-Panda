@@ -61,7 +61,10 @@ const {register , handleSubmit , watch , setValue  , formState:{errors} ,}=useFo
 const color= watch("color");
 const selectedEmoji=watch("emoji");
 
+const onSubmit=(data:EventCategoryForm)=>{
 
+    
+}
 
     return (
     
