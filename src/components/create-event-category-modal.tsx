@@ -1,24 +1,30 @@
+"use client"
 import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
 import { PropsWithChildren, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Modal } from "./ui/modal"
+import { Label } from "./ui/label"
+import { Input } from "./ui/input"
+import { cn } from "@/utils"
+import { Button } from "./ui/button"
 
-interface CreateEventCategoryModel extends PropsWithChildren{
+interface CreateEventCategoryModel extends PropsWithChildren {
     containerClassName?: string
 }
 
-const EVENT_CATEGORY_VALIDATOR=z.object({
-    name:CATEGORY_NAME_VALIDATOR ,
-    color:z.string().min(1,"Colour is Required").regex(/^#[0-9A-F]{6}$/i,"Invalid color format."),
-    emoji:z.string().emoji("Invalid emoji format.").optional(),
-
-    
+const EVENT_CATEGORY_VALIDATOR = z.object({
+    name: CATEGORY_NAME_VALIDATOR,
+    color: z
+        .string()
+        .min(1, "Colour is Required")
+        .regex(/^#[0-9A-F]{6}$/i, "Invalid color format."),
+    emoji: z.string().emoji("Invalid emoji format.").optional(),
 })
 
-//for adding type safety to our react-hook-form we will be creating type 
-type EventCategoryForm =z.infer<typeof EVENT_CATEGORY_VALIDATOR>
+//for adding type safety to our react-hook-form we will be creating type
+type EventCategoryForm = z.infer<typeof EVENT_CATEGORY_VALIDATOR>
 
 const COLOR_OPTIONS = [
     "#FF6B6B", // bg-[#FF6B6B] ring-[#FF6B6B] Bright Red
@@ -31,9 +37,9 @@ const COLOR_OPTIONS = [
     "#FF85A2", // bg-[#FF85A2] ring-[#FF85A2] Pink
     "#2ECC71", // bg-[#2ECC71] ring-[#2ECC71] Emerald Green
     "#E17055", // bg-[#E17055] ring-[#E17055] Terracotta
-  ]
-  
-  const EMOJI_OPTIONS = [
+]
+
+const EMOJI_OPTIONS = [
     { emoji: "💰", label: "Money (Sale)" },
     { emoji: "👤", label: "User (Sign-up)" },
     { emoji: "🎉", label: "Celebration" },
@@ -44,47 +50,133 @@ const COLOR_OPTIONS = [
     { emoji: "🏆", label: "Achievement" },
     { emoji: "💡", label: "Idea" },
     { emoji: "🔔", label: "Notification" },
-  ]
+]
 
+export const CreateEventCategoryModal = ({
+    children,
+    containerClassName,
+}: CreateEventCategoryModel) => {
+    const [isOpen, setIsOpen] = useState(false)
 
+    //using react hook form
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        formState: { errors },
+    } = useForm<EventCategoryForm>({
+        resolver: zodResolver(EVENT_CATEGORY_VALIDATOR),
+    })
 
-export const CreateEventCategoryModal = ({children , containerClassName}:CreateEventCategoryModel) => {
+    //basicaly just a getter functio to get  the value of color , emoji
+    const color = watch("color")
+    const selectedEmoji = watch("emoji")
 
-const[isOpen , setIsOpen]= useState(false);
-
-//using react hook form 
-const {register , handleSubmit , watch , setValue  , formState:{errors} ,}=useForm<EventCategoryForm>({
-    resolver:zodResolver(EVENT_CATEGORY_VALIDATOR)
-});
-
-//basicaly just a getter functio to get  the value of color , emoji 
-const color= watch("color");
-const selectedEmoji=watch("emoji");
-
-const onSubmit=(data:EventCategoryForm)=>{
-
-    
-}
+    const onSubmit = (data: EventCategoryForm) => { }
 
     return (
-    
-    <>
-    <div  className={containerClassName} onClick={()=> setIsOpen(true)}>
+        <>
+            <div className={containerClassName} onClick={() => setIsOpen(true)}>
+                {children}
+            </div>
+            <Modal
+                className="max-w-xl p-8"
+                showModal={isOpen}
+                setShowModal={setIsOpen}
+            >
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <div>
+                        <h2 className=" text-lg/7 font-medium tracking-tight text-gray-950">
+                            New Event Category
+                        </h2>
+                        <p className="text-sm/6 text-gray-600">
+                            Create a new category to organize your events.
+                        </p>
+                    </div>
+                    <div className="space-y-5">
+                        <div>
+                            <Label htmlFor="name">Name</Label>
+                            <Input
+                                autoFocus
+                                id="name"
+                                {...register("name")}
+                                placeholder="e.g user-signup"
+                                className="w-full"
+                            />
 
-        {children}
+                            {errors.name ? (
+                                <p className="mt-1 text-sm text-red-500">
+                                    {errors.name.message}
+                                </p>
+                            ) : null}
+                        </div>
 
-    </div>
-    <Modal
-     className="max-w-xl p-8"
-     showModal={isOpen}
-     setShowModal={setIsOpen}
-    >
-        
+                        {/* Color platelete */}
+                        <div>
+                            <Label>Color</Label>
+                            <div className="flex flex-wrap gap-3">
+                                {COLOR_OPTIONS.map((premadeColor) => (
+                                    <button
+                                        key={premadeColor}
+                                        type="button"
+                                        className={cn(
+                                            `bg-[${premadeColor}]`,
+                                            "size-10 rounded-full ring-2 ring-offset-2  transition-all ",
+                                            color === premadeColor
+                                                ? "ring-brand-700 scale-110"
+                                                : "ring-transparent hover:scale-105"
+                                        )}
+                                        onClick={() => setValue("color", premadeColor)}
+                                    ></button>
+                                ))}
+                            </div>
+                            {errors.color ? (
+                                <p className="mt-1 text-sm text-red-500">
+                                    {errors.color.message}
+                                </p>
+                            ) : null}
+                        </div>
 
-    </Modal>
+                        <div>
+                            <Label>Emoji</Label>
+                            <div className="flex flex-wrap gap-3">
+                                {EMOJI_OPTIONS.map(({ emoji, label }) => (
+                                    <button
+                                        key={emoji}
+                                        type="button"
+                                        className={cn(
+                                            "size-10 flex items-center justify-center text-xl  rounded-md transition-all",
+                                            selectedEmoji === emoji
+                                                ? "bg-brand-100 ring-2 ring-brand-700   scale-110"
+                                                : "bg-brand-10 hover:bg-brand-200"
+                                        )}
+                                        onClick={() => setValue("emoji", emoji)}
+                                    >
+                                        {emoji}
+                                    </button>
+                                ))}
+                            </div>
+                            {errors.emoji ? (
+                                <p className="mt-1 text-sm text-red-500">
+                                    {errors.emoji.message}
+                                </p>
+                            ) : null}
+                        </div>
+                    </div>
 
-    
-    </>
-
-)
-}   
+                    <div className=" flex justify-end space-x-3   pt-4 border-t">
+                        <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Cancel
+                        </Button>
+                        <Button type="submit">Create Category</Button>
+                    </div>
+                </form>
+            </Modal>
+        </>
+    )
+}

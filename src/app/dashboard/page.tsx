@@ -4,6 +4,9 @@ import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
 import React from 'react'
 import DashboardPageContent from './dashboard-page-content';
+import { CreateEventCategoryModal } from '@/components/create-event-category-modal';
+import { Button } from '@/components/ui/button';
+import { PlusIcon } from 'lucide-react';
 
 type Props = {}
 
@@ -24,7 +27,16 @@ const page = async(props: Props) => {
    }
   return (
     <div>
-      <DashboardPage title="Dashboard" hideBackButton={false}>
+      <DashboardPage title="Dashboard" hideBackButton={false}
+      cta={
+        <CreateEventCategoryModal>
+          <Button className='w-full sm:w-fit'>
+            <PlusIcon className='size-4 mr-2'/>
+            Add Category
+          </Button>
+        </CreateEventCategoryModal>
+      }
+      >
         
         Dashboard content comes here...
           {/* Rendering client side component inside server side component  */}
