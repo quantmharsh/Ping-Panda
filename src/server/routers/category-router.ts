@@ -3,6 +3,8 @@ import { router } from "../__internals/router"
 import { privateProcedure } from "../procedures"
 import { startOfMonth } from "date-fns"
 import { z } from "zod"
+import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
+import { parseColor } from "@/utils"
 
 export const categoryRouter = router({
   //get(query) request to the backend .
@@ -86,5 +88,32 @@ export const categoryRouter = router({
         return c.json({
           success:true 
         })
-      })
+      }), 
+createEventCategory :privateProcedure.input(z.object({
+  name: CATEGORY_NAME_VALIDATOR,
+  color: z
+    .string()
+    .min(1, "Color is required")
+    .regex(/^#[0-9A-F]{6}$/i, "Invalid color format."),
+  emoji: z.string().emoji("Invalid emoji").optional(),
+})
+).mutation(async({c ,ctx,input})=>{
+
+  const{user}=ctx;
+  const{color , name , emoji}=input;
+  //TODO:ADD PAID plan logic
+  const eventCategory=await db.eventCategory.create({
+    data:{
+      name:name.toLowerCase(),
+      color:parseColor(color) ,
+      emoji ,
+      userId:user.id
+      
+
+    },
+  })
+
+  return c.json({eventCategory})
+})
+
 })
