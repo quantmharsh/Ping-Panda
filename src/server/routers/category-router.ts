@@ -117,3 +117,6 @@ createEventCategory :privateProcedure.input(z.object({
 })
 
 })
+
+
+

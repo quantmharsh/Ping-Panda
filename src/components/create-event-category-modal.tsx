@@ -11,6 +11,7 @@ import { cn } from "@/utils"
 import { Button } from "./ui/button"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { client } from "@/app/lib/client"
+import Picker from "@emoji-mart/react";
 
 interface CreateEventCategoryModel extends PropsWithChildren {
     containerClassName?: string
@@ -59,6 +60,7 @@ export const CreateEventCategoryModal = ({
     containerClassName,
 }: CreateEventCategoryModel) => {
     const [isOpen, setIsOpen] = useState(false)
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
     const queryClient=useQueryClient();
     const{mutate:createEventCategory , isPending}=useMutation({
@@ -86,9 +88,14 @@ await client.category.createEventCategory.$post(data)
         resolver: zodResolver(EVENT_CATEGORY_VALIDATOR),
     })
 
-    //basicaly just a getter functio to get  the value of color , emoji
+    //basicaly just a getter function to get  the value of color , emoji
     const color = watch("color")
     const selectedEmoji = watch("emoji")
+
+    const handleEmojiSelect = (emoji: any) => {
+        setValue("emoji", emoji.native);
+        setShowEmojiPicker(false); // Close picker after selection
+    };
 
     const onSubmit = (data: EventCategoryForm) => { 
 
@@ -176,7 +183,29 @@ await client.category.createEventCategory.$post(data)
                                         {emoji}
                                     </button>
                                 ))}
+                                  <button
+                                    type="button"
+                                    className="size-10 flex items-center justify-center text-xl bg-gray-200 rounded-md transition-all hover:bg-gray-300"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Stop event propagation
+                                        setShowEmojiPicker(!showEmojiPicker)}}
+                                >
+                                    ➕
+                                </button>
                             </div>
+                            {showEmojiPicker && (
+    <div className="relative">
+        <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white shadow-lg rounded-lg"
+            style={{
+                width: "fit-content",
+                padding: "10px",
+            }}
+        >
+            <Picker onEmojiSelect={handleEmojiSelect} />
+        </div>
+    </div>
+)}
                             {errors.emoji ? (
                                 <p className="mt-1 text-sm text-red-500">
                                     {errors.emoji.message}
