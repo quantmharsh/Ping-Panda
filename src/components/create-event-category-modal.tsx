@@ -194,15 +194,24 @@ await client.category.createEventCategory.$post(data)
                                 </button>
                             </div>
                             {showEmojiPicker && (
-    <div className="relative">
+    <div className=" flex items-center justify-center ">
         <div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white shadow-lg rounded-lg"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white shadow-lg rounded-lg   " 
             style={{
                 width: "fit-content",
                 padding: "10px",
             }}
         >
-            <Picker onEmojiSelect={handleEmojiSelect} />
+         <div className="flex justify-end mb-2">
+                <button
+                    type="button"
+                    className="text-sm text-red-500 hover:text-red-600"
+                    onClick={() => setShowEmojiPicker(false)}
+                >
+                   ✖️
+                </button>
+            </div>
+            <Picker onEmojiSelect={handleEmojiSelect} className="flex justify-center items-center" />
         </div>
     </div>
 )}
@@ -218,7 +227,9 @@ await client.category.createEventCategory.$post(data)
                         <Button
                             type="button"
                             variant="outline"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {setIsOpen(false)
+                                setShowEmojiPicker(false)
+                            }}
                         >
                             Cancel
                         </Button>
