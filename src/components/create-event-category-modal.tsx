@@ -12,6 +12,7 @@ import { Button } from "./ui/button"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { client } from "@/app/lib/client"
 import Picker from "@emoji-mart/react";
+import { SketchPicker } from "react-color";
 
 interface CreateEventCategoryModel extends PropsWithChildren {
     containerClassName?: string
@@ -61,6 +62,8 @@ export const CreateEventCategoryModal = ({
 }: CreateEventCategoryModel) => {
     const [isOpen, setIsOpen] = useState(false)
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+    const[showColorPicker , setShowColorPicker]=useState(false);
+
 
     const queryClient=useQueryClient();
     const{mutate:createEventCategory , isPending}=useMutation({
@@ -96,6 +99,10 @@ await client.category.createEventCategory.$post(data)
         setValue("emoji", emoji.native);
         setShowEmojiPicker(false); // Close picker after selection
     };
+    const handleColorChange=(newColor:any)=>{
+
+        setValue("color" , newColor.hex)
+    }
 
     const onSubmit = (data: EventCategoryForm) => { 
 
@@ -157,7 +164,44 @@ await client.category.createEventCategory.$post(data)
                                         onClick={() => setValue("color", premadeColor)}
                                     ></button>
                                 ))}
+                                  <button
+                                    type="button"
+                                    className="size-10 flex items-center justify-center text-xl bg-gray-200 rounded-md transition-all hover:bg-gray-300"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Stop event propagation
+                                        setShowColorPicker(!showColorPicker);
+                                    }}
+                                >
+                                    🎨
+                                </button>
                             </div>
+                            {showColorPicker && (
+                                <div className="flex items-center justify-center">
+                                    <div
+                                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white shadow-lg rounded-lg"
+                                        style={{
+                                            width: "fit-content",
+                                            padding: "10px",
+                                        }}
+                                    >
+                                        <div className="flex justify-end mb-2">
+                                            <button
+                                                type="button"
+                                                className="text-sm text-red-500 hover:text-red-600"
+                                                onClick={() => setShowColorPicker(false)}
+                                            >
+                                                ✖️
+                                            </button>
+                                        </div>
+                                        <SketchPicker
+                                            color={color}
+                                            onChangeComplete={handleColorChange}
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            
                             {errors.color ? (
                                 <p className="mt-1 text-sm text-red-500">
                                     {errors.color.message}
