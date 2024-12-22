@@ -56,7 +56,7 @@ const DashboardPageContent = (props: Props) => {
             className="relative group z-10 transition-all duration-200  hover:-translate-y-0.5"
           >
             <div className="absolute z-0  inset-px rounded-lg bg-white" />
-            <div className="pointer-events-none  z-0 absolute inset-px rounded-lg shadow-sm transition-all duration-300 group-hover:shadow-md ring-1 ring-black/5 " />
+            <div className="pointer-events-none  z-0 absolute inset-px rounded-lg shadow-md transition-all duration-300 group-hover:shadow-md ring-4 ring-blue-300  group-hover:ring-purple-300 " />
             <div className="relative p-6 z-10">
               <div className="flex items-center gap-4 mb-6">
                 <div

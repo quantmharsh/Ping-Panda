@@ -114,7 +114,24 @@ createEventCategory :privateProcedure.input(z.object({
   })
 
   return c.json({eventCategory})
-})
+}),
+
+
+insertQuickstartCategories:privateProcedure.mutation(async({c ,ctx})=>{
+
+  const categories=await db.eventCategory.createMany({
+    data:[
+      { name:"Bug" , emoji :"🐞" , color:0xff6b6b},
+      { name:"Sale" , emoji :" 💰" , color:0xffeb3b},
+      { name:"Delivered" , emoji :"🚚" , color:0x6c5ce7}
+    ].map((category)=>({...category , userId:ctx.user.id}))
+  })
+
+  return c.json({success:true , count:categories.count})
+
+}) ,
+
+
 
 })
 
