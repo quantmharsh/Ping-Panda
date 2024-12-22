@@ -8,6 +8,7 @@ import { ArrowRight, BarChart2, Clock, Database, Trash2 } from "lucide-react"
 import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Modal } from "@/components/ui/modal"
+import { DashboardEmpyState } from "./dashboard-empty-state"
 
 type Props = {}
 
@@ -44,7 +45,9 @@ const DashboardPageContent = (props: Props) => {
     )
   }
   if (!categories || categories.length === 0) {
-    return <div>No Categories...</div>
+    return <div>
+        <DashboardEmpyState/>      
+    </div>
   }
 
   return (

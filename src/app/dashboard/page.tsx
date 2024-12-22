@@ -38,7 +38,7 @@ const page = async(props: Props) => {
       }
       >
         
-        Dashboard content comes here...
+       
           {/* Rendering client side component inside server side component  */}
         <DashboardPageContent />
         </DashboardPage>
