@@ -26,7 +26,7 @@ export const DashboardEmpyState=()=>{
                 <img 
                 src="/brand-asset-wave.png"
                 alt="No Categories"
-                className="size-48 -mt-24"
+                className="size-48 -mt-16"
                 />
             </div>
 

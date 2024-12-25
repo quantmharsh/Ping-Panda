@@ -9,7 +9,7 @@ export const authRouter = router({
     //ctx => context  that we get from middleware
     getDatabaseSyncStatus: publicProcedure.query(async ({ c, ctx }) => {
         const auth = await currentUser()
-        console.log('AUTH data:', auth);
+        // console.log('AUTH data:', auth);
         if (!auth) {
             return c.json({
                 isSynced: false,
