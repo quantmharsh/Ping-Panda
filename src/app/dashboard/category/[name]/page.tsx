@@ -2,6 +2,7 @@ import DashboardPage from "@/components/dashboard-page"
 import { db } from "@/db"
 import { currentUser } from "@clerk/nextjs/server"
 import { notFound } from "next/navigation"
+import { CategoryPageContent } from "./category-page-content"
 
 
 interface PageProps{
@@ -55,6 +56,8 @@ const Page=async({params}:PageProps)=>{
     const hasEvents= category._count.events>0
     return (
         <DashboardPage title={`${category.emoji} ${category.name} events `}  >
+            hello i am here
+            <CategoryPageContent  hasEvents={hasEvents} category={category} />
 
         </DashboardPage>
     )
