@@ -7,6 +7,7 @@ import { CategoryPageContent } from "./category-page-content"
 
 interface PageProps{
     params:{
+        // name is category name 
     name:string | string[] |undefined
 }
 }
@@ -56,7 +57,7 @@ const Page=async({params}:PageProps)=>{
     const hasEvents= category._count.events>0
     return (
         <DashboardPage title={`${category.emoji} ${category.name} events `}  >
-            hello i am here
+          
             <CategoryPageContent  hasEvents={hasEvents} category={category} />
 
         </DashboardPage>

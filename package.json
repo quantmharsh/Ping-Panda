@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.2.1",
+    "@discordjs/rest": "^2.4.0",
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
     "@hookform/resolvers": "^3.9.1",
@@ -52,6 +53,7 @@
     "@types/react-color": "^3.0.13",
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "discord-api-types": "^0.37.114",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
