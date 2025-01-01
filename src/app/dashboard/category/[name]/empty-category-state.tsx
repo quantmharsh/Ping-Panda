@@ -100,6 +100,17 @@ export const EmptyCategoryState = ({
                     </a>
                     .
                 </p>
+                <p className="text-sm/6 text-gray-600 mt-4 text-center">
+                    <strong>Note:</strong> Before proceeding, please ensure you have added our Discord bot to your server.{" "}
+                    <a
+                        href="https://discord.com/oauth2/authorize?client_id=1322597285850517637&permissions=2048&scope=bot"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline font-medium"
+                    >
+                        Add PingPanda Bot
+                    </a>
+                </p>
             </div>
         </Card>
     )
