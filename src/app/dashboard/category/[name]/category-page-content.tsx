@@ -7,9 +7,12 @@ import { useEffect, useMemo, useState } from "react"
 import { client } from "@/app/lib/client"
 import { ColumnDef, ColumnFilter, ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, Row, SortingState, useReactTable } from "@tanstack/react-table"
 import { Button } from "@/components/ui/button"
-import { ArrowUpDown } from "lucide-react"
+import { ArrowUpDown, BarChart, BarChart2 } from "lucide-react"
 import { cn } from "@/utils"
 import { isAfter, isToday, startOfMonth, startOfWeek } from "date-fns"
+import { Card } from "@/components/ui/card"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { TabsContent } from "@radix-ui/react-tabs"
 
 
 
@@ -214,7 +217,44 @@ export const CategoryPageContent = ({
     [data?.events])
 
 
+const NumericFieldSumCards=()=>{
+  if(Object.keys(numericFieldSums).length===0)
+  {
+    return  null;
+  }
+  return Object.entries(numericFieldSums).map(([field , sums])=>{
+    const relevantSum=activeTab==="today"?sums.today:activeTab==="week"?sums.thisWeek:sums.thisMonth;
 
+
+    return(
+<Card key={field}>
+  <div className="flex flex-row items-center justify-between  space-y-0 pb-2 ">
+    <p className="text-sm/6 font-medium">
+    {field.charAt(0).toUpperCase()+field.slice(1)}
+
+    </p>
+    <BarChart className="size-4 text-muted-foreground"/>
+
+  </div>
+  <div>
+ <p className="text-2xl font-bold">
+  {
+    relevantSum.toFixed(2)
+  }
+  </p>   
+  <p className="text-xs/5 text-muted-foreground">
+  {
+    activeTab==="today"?"today":activeTab==="week"?"this week":"this month"
+  }
+
+  </p>
+  </div>
+
+</Card>
+
+    )
+  })
+}
 
 
   if (!pollingData.hasEvents) {
@@ -222,11 +262,57 @@ export const CategoryPageContent = ({
 
   }
   return (
-    <>
-      <h1>
+   <div className="space-y-6">
+    <Tabs value={activeTab}
+     onValueChange={(value)=>{setActiveTab(value as "today"|"week"|"month")}}
+    >
+ <TabsList className="mb-2">
+  <TabsTrigger value="today">
+Today
+  </TabsTrigger>
+  <TabsTrigger value="week">
+This Week
+  </TabsTrigger>
+  <TabsTrigger value="month">
+This Month
+  </TabsTrigger>
 
-      </h1>
-    </>
+ </TabsList>
+ <TabsContent value={activeTab}>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-4 mb-16 ">
+    <Card className="border-2 border-brand-700 ">
+      <div className="flex flex-row items-center justify-between space-y-0 pb-2 ">
+        <p className="text-sm/6 font-medium">
+        Total Events
+
+        </p>
+        <BarChart2 className="size-4 text-muted-foreground"/>
+
+      </div>
+      <div>
+        <p className="text-2xl font-bold ">
+          {data?.eventsCount ||0}
+
+        </p>
+        <p className="text-xs/5 text-muted-foreground">
+        Events{" "}
+        {
+          activeTab==="today"?"today":activeTab==="week"?"this week":"this month"
+        }
+
+        </p>
+
+      </div>
+
+    </Card>
+    <NumericFieldSumCards/>
+
+  </div>
+
+ </TabsContent>
+    </Tabs>
+
+   </div>
   )
 
 }
