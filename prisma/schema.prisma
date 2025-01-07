@@ -81,4 +81,11 @@ model Quota {
   month     Int
   count     Int      @default(0)
   updatedAt DateTime @updatedAt
+    @@unique([userId, year, month]) // Composite unique constraint
+}
+model Test{
+  id String @id @default(cuid())
+  name String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

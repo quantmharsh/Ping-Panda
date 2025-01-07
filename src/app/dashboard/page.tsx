@@ -14,15 +14,19 @@ type Props = {}
 //if user is not logged in then redirect to sign in page
 const page = async(props: Props) => {
    const auth = await currentUser();
+   console.log("Auth Data in dashboard page" ,auth)
    if(!auth)
    {
+    console.log("no auth data" ,auth)
     redirect("/sign-in");
    }
    const user = await db.user.findUnique({
     where:{externalId:auth.id}
    })
+   console.log("user ?" ,user)
    if(!user)
    {
+    console.log("no user")
     redirect("/sign-in");
    }
   return (

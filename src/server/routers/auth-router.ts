@@ -9,8 +9,9 @@ export const authRouter = router({
     //ctx => context  that we get from middleware
     getDatabaseSyncStatus: publicProcedure.query(async ({ c, ctx }) => {
         const auth = await currentUser()
-        // console.log('AUTH data:', auth);
+        console.log('AUTH data:', auth);
         if (!auth) {
+            console.log("No auth Data Recived")
             return c.json({
                 isSynced: false,
             })
@@ -18,10 +19,12 @@ export const authRouter = router({
         const user = await db.user.findFirst({
             where: { externalId: auth.id },
         })
+        
        
 
         //Sync Clerk  User with Db
         if (!user) {
+            console.log("User not synced with DB")
             await db.user.create({
                 data: {
                     quotaLimit: 100,
@@ -33,6 +36,7 @@ export const authRouter = router({
             //     isSynced: true,
             // })
         }
+        console.log("synched user to db")
         return c.json({
             isSynced: true,
         })

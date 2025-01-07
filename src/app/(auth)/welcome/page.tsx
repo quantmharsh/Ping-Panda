@@ -11,7 +11,9 @@ import { useEffect } from "react"
 // Syncronize auth status to our database
 const page = () => {
   const router = useRouter()
+ 
   const { data } = useQuery({
+    
     queryFn: async () => {
       //Type-safe   get request 
       const res = await client.auth.getDatabaseSyncStatus.$get()
@@ -24,12 +26,15 @@ const page = () => {
   })
   useEffect(() => {
     if (data?.isSynced) {
+      console.log("data sync",data?.isSynced)
       router.push("/dashboard")
     }
   }, [data, router])
   return (
+    
     <div className="flex  w-full flex-1 items-center justify-center px-4">
       <BackgroundPattern className="absolute inset-0 left-1/2 z-0 -translate-x-1/2 opacity-75" />
+      
       <div className="relative z-10 flex -translate-y-1/2 flex-col items-center  gap-6 text-center">
         <LoadingSpinner size="md" />
         <Heading>
