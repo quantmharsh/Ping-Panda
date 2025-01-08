@@ -78,13 +78,15 @@ export const POST = async (req: NextRequest) => {
 
         const quota = await db.quota.findUnique({
             where: {
-                userId: user.id,
-                month: currentMonth,
-                year: currentYear
+               userId_year_month: { userId: user.id,
+                    month: currentMonth,
+                    year: currentYear}
+               
             },
         })
 
         const quotaLimit = user.plan === "FREE" ? FREE_QUOTA.maxEventsPerMonth : PRO_QUOTA.maxEventsPerMonth
+        console.log("Current quota used",quota?.count)
 
         if (quota && quota.count >= quotaLimit) {
             return NextResponse.json({
@@ -161,10 +163,11 @@ export const POST = async (req: NextRequest) => {
 
             await db.quota.upsert({
                 where: {
-                    userId: user.id,
-                    month: currentMonth,
-                    year: currentYear
-                },
+                    userId_year_month: { userId: user.id,
+                         month: currentMonth,
+                         year: currentYear}
+                    
+                 },
                 update: {
                     count: {
                         increment: 1
@@ -178,6 +181,26 @@ export const POST = async (req: NextRequest) => {
                 },
 
             })
+            // await db.quota.upsert({
+            //     where: {
+            //         userId_month_year: {
+            //             userId: user.id,
+            //             month: currentMonth,
+            //             year: currentYear,
+            //         },
+            //     },
+            //     update: {
+            //         count: {
+            //             increment: 1,
+            //         },
+            //     },
+            //     create: {
+            //         userId: user.id,
+            //         month: currentMonth,
+            //         year: currentYear,
+            //         count: 1,
+            //     },
+            // });
 
 
         } catch (error) {

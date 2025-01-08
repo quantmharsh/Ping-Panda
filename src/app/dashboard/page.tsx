@@ -1,7 +1,7 @@
 import DashboardPage from '@/components/dashboard-page';
 import { db } from '@/db';
 import { currentUser } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React from 'react'
 import DashboardPageContent from './dashboard-page-content';
 import { CreateEventCategoryModal } from '@/components/create-event-category-modal';
@@ -14,24 +14,25 @@ type Props = {}
 //if user is not logged in then redirect to sign in page
 const page = async(props: Props) => {
    const auth = await currentUser();
-   console.log("Auth Data in dashboard page" ,auth)
+  //  const router=useRouter();
+  //  console.log("Auth Data in dashboard page" ,auth)
    if(!auth)
    {
-    console.log("no auth data" ,auth)
+    // console.log("no auth data" ,auth)
     redirect("/sign-in");
    }
    const user = await db.user.findUnique({
     where:{externalId:auth.id}
    })
-   console.log("user ?" ,user)
+  //  console.log("user ?" ,user)
    if(!user)
    {
-    console.log("no user")
-    redirect("/sign-in");
+    // console.log("no user")
+    redirect("/welcome");
    }
   return (
     <div>
-      <DashboardPage title="Dashboard" hideBackButton={false}
+      <DashboardPage title="Dashboard" hideBackButton={true}
       cta={
         <CreateEventCategoryModal>
           <Button className='w-full sm:w-fit'>

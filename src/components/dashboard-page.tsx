@@ -23,7 +23,7 @@ const DashboardPage = ({title ,children, cta ,hideBackButton}: DashboardPageProp
       <div className='w-full flex flex-col  sm:flex-row   items-start sm:items-center gap-6'>
         <div className='flex items-center gap-8'>
           {hideBackButton ? null : (
-            <Button onClick={()=>router.push("/dashboard")} 
+            <Button onClick={()=>{router.push("/dashboard")}} 
             className='w-fit bg-white'
             variant="outline"
             >
