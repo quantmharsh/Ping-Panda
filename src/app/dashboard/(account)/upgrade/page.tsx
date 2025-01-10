@@ -6,7 +6,7 @@ import { UpgradePageContent } from "./upgrade-page-content";
 
 
 
-const Page=async()=>{
+const page=async()=>{
     const auth=await currentUser();
     if(!auth)
     {
@@ -27,3 +27,4 @@ const Page=async()=>{
         </DashboardPage>
     )
 }
+export default page;
