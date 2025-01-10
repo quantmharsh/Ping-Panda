@@ -20,9 +20,7 @@ const page = () => {
       return await res.json()
     },
     queryKey: ["get-database-sync-status"],
-    refetchInterval: (query) => {
-      return query.state.data?.isSynced ? false : 1000
-    },
+    refetchInterval:false
   })
   useEffect(() => {
     if (data?.isSynced) {
