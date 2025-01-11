@@ -100,7 +100,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
                 )}.
                 {plan !== "PRO" && (
                     <span
-                        onClick={() => createCheckoutSession}
+                        onClick={() => createCheckoutSession()}
                         className="inline cursor-pointer underline text-brand-600"
                     >
                         {" "}

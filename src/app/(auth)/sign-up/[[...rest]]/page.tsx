@@ -8,7 +8,7 @@ type Props = {}
 const page = (props: Props) => {
   return (
     <div className='w-full flex-1  flex items-center  justify-center '>
-        <SignUp/>
+        <SignUp fallbackRedirectUrl={"/welcome"} forceRedirectUrl={"/welcome"}/>
     </div>
   )
 }

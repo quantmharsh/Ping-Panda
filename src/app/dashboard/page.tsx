@@ -28,7 +28,7 @@ const page = async(props: Props) => {
    if(!user)
    {
     // console.log("no user")
-    redirect("/welcome");
+    redirect("/sign-in");
    }
   return (
     <div>
