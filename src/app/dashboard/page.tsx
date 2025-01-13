@@ -7,12 +7,18 @@ import DashboardPageContent from './dashboard-page-content';
 import { CreateEventCategoryModal } from '@/components/create-event-category-modal';
 import { Button } from '@/components/ui/button';
 import { PlusIcon } from 'lucide-react';
+import { createCheckoutSession } from '@/lib/stripe';
+import { PaymentSuccessModal } from '@/components/payment-success-modal';
 
-type Props = {}
+interface PageProps{
+  searchParams:{
+    [key:string]:string|string[]|undefined
+  }
+}
 
 
 //if user is not logged in then redirect to sign in page
-const page = async(props: Props) => {
+const page = async({searchParams}: PageProps) => {
    const auth = await currentUser();
   //  const router=useRouter();
   //  console.log("Auth Data in dashboard page" ,auth)
@@ -30,8 +36,24 @@ const page = async(props: Props) => {
     // console.log("no user")
     redirect("/sign-in");
    }
+
+   const intent=searchParams.intent
+   if(intent==="upgrade")
+   {
+    const session = await createCheckoutSession({
+      userEmail:user.email ,
+      userId:user.id
+    })
+    if(session.url)
+    {
+      redirect(session.url)
+    }
+    
+   }
+   const success=searchParams.success
   return (
     <div>
+      {success?<PaymentSuccessModal/>:null}
       <DashboardPage title="Dashboard" hideBackButton={true}
       cta={
         <CreateEventCategoryModal>
