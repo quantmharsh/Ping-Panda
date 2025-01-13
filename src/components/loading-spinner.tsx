@@ -20,7 +20,7 @@ const spinnerVariants=cva(
 interface LoadingSpinnerProps extends  VariantProps<typeof spinnerVariants >
 {
     className?:string
-   size:"md"
+   size?:"md"
 }
 
 const LoadingSpinner=({size , className}:LoadingSpinnerProps)=>{

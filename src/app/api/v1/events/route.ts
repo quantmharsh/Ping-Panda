@@ -107,7 +107,7 @@ export const POST = async (req: NextRequest) => {
 
         } catch (error) {
             return NextResponse.json({
-                message: "Invalida JSON request body"
+                message: "Invalid  JSON request body"
             },
 
                 {
@@ -181,26 +181,7 @@ export const POST = async (req: NextRequest) => {
                 },
 
             })
-            // await db.quota.upsert({
-            //     where: {
-            //         userId_month_year: {
-            //             userId: user.id,
-            //             month: currentMonth,
-            //             year: currentYear,
-            //         },
-            //     },
-            //     update: {
-            //         count: {
-            //             increment: 1,
-            //         },
-            //     },
-            //     create: {
-            //         userId: user.id,
-            //         month: currentMonth,
-            //         year: currentYear,
-            //         count: 1,
-            //     },
-            // });
+           
 
 
         } catch (error) {
