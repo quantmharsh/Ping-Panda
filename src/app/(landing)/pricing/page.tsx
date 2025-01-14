@@ -23,7 +23,7 @@ const Page = () => {
         {
             mutationFn: async () => {
                 const res = await client.payment.createCheckoutSession.$post();
-                return await res.json();
+                return await res.json(); 
             },
             onSuccess: ({ url }) => {
                 if (url) {

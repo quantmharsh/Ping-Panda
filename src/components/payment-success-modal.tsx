@@ -68,7 +68,10 @@ export const PaymentSuccessModal = () => {
                                 Upgrade complete! 🎉
                             </p>
                             <p className="text-gray-600 text-sm/6 text-pretty">
-                                Look at you, all fancy and upgraded! 🥳 Thanks for supporting PingPanda—now go enjoy those sweet Pro perks like the legend you are 💫 !
+                                Look at you, all fancy and <span className="relative">
+    <del className="text-gray-400">hacked</del>
+    <span className="ml-1 font-semibold text-green-600">Upgraded</span>
+  </span>!🥳 Thanks for supporting PingPanda—now go enjoy those sweet Pro perks like the legend you are 💫 !
                             </p>
                         </div>
                         <div className="mt-8 w-full">

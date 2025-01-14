@@ -29,7 +29,7 @@ const Navbar = async() => {
                 })}>DashBoard <ArrowRight className='ml-1.5 size-4'/></Link>
               </> :
               <>
-                <Link href="/dashboard" className={buttonVariants({
+                <Link href="/pricing" className={buttonVariants({
                   size:"sm",
                  variant:"ghost",
                 })}> Pricing</Link>
