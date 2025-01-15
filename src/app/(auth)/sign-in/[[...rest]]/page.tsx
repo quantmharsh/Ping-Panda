@@ -5,7 +5,7 @@ import React from 'react'
 
 type Props = {}
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
   const searchParams= useSearchParams();
   const intent =searchParams.get("intent");
   return (
@@ -15,4 +15,4 @@ const page = (props: Props) => {
   )
 }
 
-export default page
+export default Page

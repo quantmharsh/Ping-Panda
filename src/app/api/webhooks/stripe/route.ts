@@ -33,6 +33,6 @@ export async function POST(req:Request ,res:Response){
                 plan:"PRO"
             }
         })
-        return new Response("Success")
+        return new Response("ok")
     }
 }

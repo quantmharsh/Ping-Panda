@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 // Syncronize auth status to our database
-const page = () => {
+const Page = () => {
   const router = useRouter()
  
   const { data } = useQuery({
@@ -146,4 +146,4 @@ const BackgroundPattern = (props: LucideProps) => {
   )
 }
 
-export default page
+export default Page
