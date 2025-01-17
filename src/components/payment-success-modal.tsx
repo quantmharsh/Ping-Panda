@@ -11,7 +11,7 @@ import { CheckCircle } from "lucide-react";
 
 export const PaymentSuccessModal = () => {
     const router = useRouter();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const { data, isPending } = useQuery({
         queryKey: ["user-plan"],
         queryFn: async () => {
@@ -46,8 +46,7 @@ export const PaymentSuccessModal = () => {
                             Upgrading your account😃...
                         </p>
 
-                        jsx
-                        Copy code
+                     
                         <p className="text-gray-600 text-sm/6 mt-2 text-center text-pretty">
                             Hang tight! We’re upgrading your account—just a moment, we promise it’ll be worth the wait!
                         </p>

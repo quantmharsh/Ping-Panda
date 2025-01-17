@@ -15,7 +15,7 @@ import { Icons } from "@/components/icons"
 type Props = {}
 
 const page = (props: Props) => {
-  const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
+  const codeSnippet = `await fetch("https://pingpandav1.vercel.app/api/v1/events", {
     method: "POST",
     body: JSON.stringify({
       category: "sale",
